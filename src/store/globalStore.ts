@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { MessageStore } from "../types/globals";
+import { KeyStore, MessageStore } from "../types/globals";
 
 export const useMessageStore = create<MessageStore>((set) => ({
   messages: [
@@ -16,4 +16,8 @@ export const useMessageStore = create<MessageStore>((set) => ({
   ],
   addMessage: (newMessage) =>
     set((state) => ({ messages: [...state.messages, newMessage] })),
+}));
+export const useKeyStore = create<KeyStore>((set) => ({
+  key: "",
+  addKey: (newKey) => set({ key: newKey }),
 }));

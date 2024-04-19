@@ -1,13 +1,14 @@
 import { useMutation, useQueryClient } from "react-query";
-import { useMessageStore } from "../store/globalStore";
+import { useKeyStore, useMessageStore } from "../store/globalStore";
 import { Message } from "../types/globals";
 
-const API_KEY = import.meta.env.VITE_API_KEY;
 
 const useChatGPTQuery = () => {
   const { addMessage } = useMessageStore();
   const queryClient = useQueryClient();
-
+  const {key} = useKeyStore();
+  const API_KEY = key;
+  
   const {
     mutate: processMessageToChatGPT,
     isLoading,

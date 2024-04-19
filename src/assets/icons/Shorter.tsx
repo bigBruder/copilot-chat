@@ -7,7 +7,7 @@ const ShorterIcon = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clipath="url(#clip0_1_63)">
+      <g clipPath="url(#clip0_1_63)">
         <path
           d="M1.33333 14.6667L6 10M6 10H2.09523M6 10V13.9048"
           stroke="#131923"

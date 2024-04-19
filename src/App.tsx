@@ -4,11 +4,33 @@ import { useState } from "react";
 import CopilotChat from "./components/CopilotChat/CopilotChat";
 import MessageInput from "./components/CopilotChat/CopilotChatComponents/MessageInput";
 import CrossIcon from "./assets/icons/Cross";
+import { useKeyStore } from "./store/globalStore";
 
 const queryClient = new QueryClient();
 
 function App() {
   const [isWelcome, setIsWelcome] = useState(true);
+  const [input, setInput] = useState("");
+  const { key, addKey } = useKeyStore();
+
+  if (!key) {
+    return (
+      <div className="h-screen w-full flex items-center justify-center">
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          className="border max-w-[400px] justify-center w-full items-start self-center px-4 py-4 text-base bg-slate-50 rounded-[50px] text-neutral-500 outline-none"
+        />
+        <button
+          onClick={() => addKey(input)}
+          className="rounded-[50px] p-4 border"
+        >
+          apply
+        </button>
+      </div>
+    );
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
